@@ -29,6 +29,9 @@ class Stock_Sucursal(models.Model):
     sucursal = models.ForeignKey(Sucursal, on_delete=models.RESTRICT)
     medicamento = models.ForeignKey(Medicamento, on_delete=models.RESTRICT)
     
+    class Meta:
+        # Restricción de unicidad
+        unique_together = ('medicamento', 'sucursal')  
     
     def __str__(self):
         return f"{self.sucursal.direccion}-{self.medicamento.nombre}"
