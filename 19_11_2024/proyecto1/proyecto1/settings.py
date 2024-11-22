@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'app1',
     'modelos',
     'AppLibros',
+    'ModeloTest'
 ]
 
 MIDDLEWARE = [

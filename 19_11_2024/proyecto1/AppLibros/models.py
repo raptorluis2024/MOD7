@@ -11,7 +11,7 @@ class Libro(models.Model):
 class Autor(models.Model):
     nombre = models.CharField(max_length=50, null=False, blank=False)
     apellido = models.CharField(max_length=50, null=False, blank=False)
-    libros = models.ManyToManyField(Libro, related_name="autores")
+    libros = models.ManyToManyField(Libro, through="AutorLibro")
     
     def __str__(self):
         return self.nombre
@@ -24,3 +24,4 @@ class AutorLibro(models.Model):
     
     def __str__(self):
         return f"{self.autor.nombre}-{self.libro.titulo}"
+        
