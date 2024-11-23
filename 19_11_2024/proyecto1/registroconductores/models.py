@@ -7,6 +7,9 @@ class Conductor(models.Model):
     apellido = models.CharField(max_length=50, null=False, blank=False)
     fecha_nac = models.DateField(null=False, blank=False)
     
+    def __str__(self):
+        return f"{self.rut}-{self.nombre}-{self.apellido}"
+    
 class Direccion(models.Model):
     calle = models.CharField(max_length=50, null=False, blank=False)
     numero = models.CharField(max_length=10, null=False, blank=False)
