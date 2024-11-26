@@ -63,12 +63,12 @@ class Seccion(models.Model):
         unique_together = ('curso', 'profesor', 'id')
     
 class DetalleSeccion(models.Model):
-    seccion = models.ForeignKey(Seccion, on_delete=models.CASCADE)
-    estudiante = models.ForeignKey(Estudiante, related_name="alumnoseccion", on_delete=models.CASCADE)
+    seccion = models.ForeignKey(Seccion, related_name="detalleseccion", on_delete=models.CASCADE)
+    estudiante = models.ForeignKey(Estudiante, related_name="estudianteseccion", on_delete=models.CASCADE)
     fecha_alta = models.DateField()
     
     def __str__(self):
-        return f"Seccion {self.seccion} Estudiante {self.estudiante}"
+        return f"{self.seccion} Estudiante {self.estudiante}"
         
     class Meta:
         # Restricción de unicidad
