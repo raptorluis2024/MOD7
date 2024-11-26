@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'modelos',
     'AppLibros',
     'ModeloTest',
-    'registroconductores'
+    'registroconductores',
+    'desafio',
+    'desafionew'
 ]
 
 MIDDLEWARE = [
