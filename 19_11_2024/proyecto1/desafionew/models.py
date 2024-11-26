@@ -60,7 +60,7 @@ class Seccion(models.Model):
     
     class Meta:
         # Restricción de unicidad
-        unique_together = ('curso', 'profesor')
+        unique_together = ('curso', 'profesor', 'id')
     
 class DetalleSeccion(models.Model):
     seccion = models.ForeignKey(Seccion, on_delete=models.CASCADE)
