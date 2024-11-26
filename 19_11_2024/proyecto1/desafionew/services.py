@@ -22,6 +22,29 @@ def listadoSecciones():
         lista.append(detalle)
 
     return lista
+
+def crearCurso(codigo, nombre, version):
+    try:
+        curso = Curso(codigo=codigo,nombre=nombre, version=version)
+        curso.save()
+        return curso
+    except Exception as ex:
+        print(ex)
+        return ex
+
+def listarCursos():
+    cursos = Curso.objects.all()
+    return cursos 
+
+def crearProfesor(rut, nombre, apellido, activo, creado_por ):
+    try:
+        profesor = Profesor(rut=rut, nombre=nombre, apellido=apellido,activo=activo, creado_por = creado_por )
+        profesor.save()
+        return profesor
+    except Exception as ex:
+        return ex
+    
+
             
 
 
