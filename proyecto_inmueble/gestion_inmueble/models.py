@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime as dt
+from django.utils import timezone
 
 # Create your models here.
 class Region(models.Model):
@@ -56,6 +58,9 @@ class Inmueble(models.Model):
     id_user = models.ForeignKey(Profile,on_delete=models.CASCADE,null=True,)
     id_tipo_inmueble = models.ForeignKey(Tipo_inmueble,on_delete=models.CASCADE,null=True,)
     id_comuna = models.ForeignKey(Comuna,on_delete=models.CASCADE,null=True,)
+    precio = models.IntegerField(default=0)
+    fecha_creacion = models.DateField(default=timezone.now())
+    ultima_modificacion = models.DateField(default=timezone.now())
     
     def __str__(self):
         return f"{self.id_inmueble}-{self.nombre_inmueble}"
