@@ -35,6 +35,14 @@ def delRegion(id):
     except Exception as ex:
         return ex
     
-    
+def getComunas(id_region):
+    try:
+        region = Region.objects.get(id_region=id_region)
+        lista = Comuna.objects.filter(region=id_region)
+        return lista
+    except Exception as ex:
+        return ex
+
+
 
 
