@@ -1,0 +1,22 @@
+{% extends 'layout/base.html'%}
+{%block content%}
+{% include 'layout/navbar.html'%}
+
+    <p>Formulario de Registro</p>
+    <p>
+        {%if error%}
+        <p>{{error}}</p>
+        {%endif%}
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form}}
+
+        <input type="submit" value="Sign_up">
+        </form>
+    </p>
+    <p>
+        {%if users%}
+        {{users}}
+        {%endif%}
+    </p>
+{%endblock%}

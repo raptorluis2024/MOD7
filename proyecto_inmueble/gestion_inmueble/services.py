@@ -1,4 +1,9 @@
 from gestion_inmueble.models import Comuna, Region,User, Profile
+from gestion_inmueble.models import Inmueble
+
+def getInmuebles():
+    inmuebles = Inmueble.objects.all()
+    return inmuebles
 
 
 def listarComunas():

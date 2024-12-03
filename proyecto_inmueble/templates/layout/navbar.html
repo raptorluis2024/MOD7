@@ -1,0 +1,22 @@
+<nav class="navbar bg-body-tertiary">
+    <form class="container-fluid justify-content-start">
+        <a href="/" class="btn btn-outline-success me-2" type="button">
+            Home
+        </a>
+        <a href="/inmuebles" class="btn btn-outline-success me-2" type="button">
+            Inmuebles
+        </a>
+        {% if user.is_authenticated %}
+            <a href="/logout" class="btn btn-outline-success me-2" type="button">
+                Logout
+            </a>
+        {% else %}
+        <a href="/sign_up" class="btn btn-outline-success me-2" type="button">
+            Signup
+        </a>
+        <a href="/login" class="btn btn-outline-success me-2" type="button">
+            Login
+        </a>
+        {% endif %}
+    </form>
+</nav>

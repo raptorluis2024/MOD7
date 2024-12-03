@@ -1,0 +1,17 @@
+{%extends 'layout/base.html'%}
+
+{%block content%}
+{% include 'layout/navbar.html'%}
+<h1>Inmuebles</h1>
+<p>
+    {%for i in inmuebles%}
+    
+    <h3>{{i.id}}</h3>
+    <p>{{i.nombre}}</p>
+    <p>{{i.descripcion}}</p>
+    {%endfor%}
+</p>
+<p>
+    <a href="/crear_inmueble/">Ir a crear inmueble</a>
+</p>
+{%endblock%}
