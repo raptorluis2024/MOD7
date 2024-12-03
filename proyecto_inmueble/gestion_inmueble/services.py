@@ -1,6 +1,15 @@
 from gestion_inmueble.models import Comuna, Region,User, Profile
 from gestion_inmueble.models import Inmueble
 
+
+from django.db import connection
+def obtener_comunas_por_region(region_id):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM gestion_inmueble_comuna WHERE region_id = %s", [region_id])
+        resultados = cursor.fetchall()
+        return resultados   
+
+
 def getInmuebles():
     inmuebles = Inmueble.objects.all()
     return inmuebles
