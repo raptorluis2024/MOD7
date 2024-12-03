@@ -13,9 +13,11 @@ from django.shortcuts import get_object_or_404
 
 @login_required      
 def inmuebles(request):
+    user = request.user
+    profile = get_object_or_404(Profile, user = user) 
     template = loader.get_template('inmuebles.html')
     inmuebles = Inmueble.objects.all()
-    context = {'inmuebles': inmuebles}
+    context = {'inmuebles': inmuebles, "profile":profile}
     return HttpResponse(template.render(context, request))
 
 @login_required  
