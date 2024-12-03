@@ -3,6 +3,7 @@
 {%block content%}
 {% include 'layout/navbar.html'%}
 <h1>Inmuebles</h1>
+<p>{{profile}}</p>
 <p>
     {%for i in inmuebles%}
     
@@ -11,7 +12,10 @@
     <p>{{i.descripcion}}</p>
     {%endfor%}
 </p>
+
 <p>
-    <a href="/crear_inmueble/">Ir a crear inmueble</a>
+    {%if profile.id_tipo_user.codigo_tipo_usuario == 1%}
+        <a href="/crear_inmueble/">Ir a crear inmueble</a>
+    {%endif%}    
 </p>
 {%endblock%}

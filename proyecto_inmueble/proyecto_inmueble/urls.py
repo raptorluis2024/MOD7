@@ -25,6 +25,7 @@ urlpatterns = [
     path('sign_up/', sign_up),
     path('logout/', sign_out, name='logout'),
     path('login/', log_in, name="login"),
-    path('crear_inmueble/', crear_inmueble, name="crearinmueble")
+    path('crear_inmueble/', crear_inmueble, name="crearinmueble"),
+   
     
 ]
