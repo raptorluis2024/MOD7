@@ -1,0 +1,50 @@
+[
+{
+    "model": "gestion_inmueble.comuna",
+    "pk": 1,
+    "fields": {
+        "nombre_comuna": "MAIPU",
+        "region": 13
+    }
+},
+{
+    "model": "gestion_inmueble.comuna",
+    "pk": 2,
+    "fields": {
+        "nombre_comuna": "LAS CONDES",
+        "region": 13
+    }
+},
+{
+    "model": "gestion_inmueble.comuna",
+    "pk": 3,
+    "fields": {
+        "nombre_comuna": "SAN MIGUEL",
+        "region": 13
+    }
+},
+{
+    "model": "gestion_inmueble.comuna",
+    "pk": 22,
+    "fields": {
+        "nombre_comuna": "LA PINTANA",
+        "region": 13
+    }
+},
+{
+    "model": "gestion_inmueble.comuna",
+    "pk": 23,
+    "fields": {
+        "nombre_comuna": "LA REINA",
+        "region": 13
+    }
+},
+{
+    "model": "gestion_inmueble.comuna",
+    "pk": 24,
+    "fields": {
+        "nombre_comuna": "CONCHALI",
+        "region": 13
+    }
+}
+]

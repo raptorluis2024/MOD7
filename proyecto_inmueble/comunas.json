@@ -19,7 +19,7 @@
     "model": "gestion_inmueble.Comuna",
     "pk": 24,
     "fields": {
-      "nombre_comuna": "SAN MIGUEL",
+      "nombre_comuna": "CONCHALI",
       "region" : 13	     
     }
   }

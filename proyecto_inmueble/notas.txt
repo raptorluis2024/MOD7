@@ -1,0 +1,2 @@
+python manage.py loaddata comunas.json 
+python manage.py dumpdata --indent 4 gestion_inmueble.Comuna > comunasDump.json
