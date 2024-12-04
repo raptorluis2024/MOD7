@@ -1,0 +1,34 @@
+[
+{
+    "model": "gestion_inmueble.comuna",
+    "pk": 1,
+    "fields": {
+        "nombre_comuna": "SANTIAGO CENTRO",
+        "region": 13
+    }
+},
+{
+    "model": "gestion_inmueble.comuna",
+    "pk": 22,
+    "fields": {
+        "nombre_comuna": "LA PINTANA",
+        "region": 13
+    }
+},
+{
+    "model": "gestion_inmueble.comuna",
+    "pk": 23,
+    "fields": {
+        "nombre_comuna": "LA REINA",
+        "region": 13
+    }
+},
+{
+    "model": "gestion_inmueble.comuna",
+    "pk": 24,
+    "fields": {
+        "nombre_comuna": "SAN MIGUEL",
+        "region": 13
+    }
+}
+]

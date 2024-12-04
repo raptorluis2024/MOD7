@@ -33,5 +33,3 @@ resultados = obtener_comunas_por_region(1)
 print(resultados)
 for resultado in resultados:
     print(resultado)
-
-

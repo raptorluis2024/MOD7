@@ -1,0 +1,28 @@
+[
+  {
+    "model": "gestion_inmueble.Comuna",
+    "pk": 22,
+    "fields": {
+      "nombre_comuna": "LA PINTANA",
+      "region" : 13	     
+    }
+  },
+{
+    "model": "gestion_inmueble.Comuna",
+    "pk": 23,
+    "fields": {
+      "nombre_comuna": "LA REINA",
+      "region" : 13	     
+    }
+  },
+{
+    "model": "gestion_inmueble.Comuna",
+    "pk": 24,
+    "fields": {
+      "nombre_comuna": "SAN MIGUEL",
+      "region" : 13	     
+    }
+  }
+
+
+]
