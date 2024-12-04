@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from gestion_inmueble.models import Inmueble, Profile
 from gestion_inmueble.services import getInmuebles
 from django.shortcuts import get_object_or_404
+from django.http import Http404
 
 
 # Create your views here.
@@ -69,15 +70,16 @@ def log_in(request):
             context["error"] = "Usuario o contraseña incorrectos"
             return HttpResponse(template.render(context, request))
         else:
+               
                 login(request, user)
                 template = loader.get_template('inmuebles.html')
                 inmuebles = getInmuebles()
                 usuario = User.objects.filter(username=usuario).values()[0]["username"]
                 user = get_object_or_404(User, username = request.user) 
-                #profile = Profile.objects.get(user=user)
                 profile = get_object_or_404(Profile, user = user) 
                 context = {"usuario_logueado":usuario, "inmuebles":inmuebles, "profile":profile}
                 return HttpResponse(template.render(context, request))
+                
         
 def index(request):
     template = loader.get_template('home.html')
