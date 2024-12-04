@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from gestion_inmueble.models import Inmueble, Profile
 from gestion_inmueble.services import getInmuebles
 from django.shortcuts import get_object_or_404
-from django.http import Http404
+from gestion_inmueble.forms import formulario_inmueble
 
 
 # Create your views here.
@@ -24,7 +24,7 @@ def inmuebles(request):
 @login_required  
 def crear_inmueble(request):
     template = loader.get_template('crear_inmueble.html')
-    context = {}
+    context = {'form':formulario_inmueble}
     return HttpResponse(template.render(context, request))
 
 def sign_out(request):
@@ -85,3 +85,5 @@ def index(request):
     template = loader.get_template('home.html')
     context = {}
     return HttpResponse(template.render(context, request))
+
+
