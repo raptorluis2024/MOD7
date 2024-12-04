@@ -1,0 +1,9 @@
+[
+  {
+    "model": "gestion_inmueble.Region",
+    "pk": 11,
+    "fields": {
+      "nombre_region": "TEST"     
+    }
+  }
+]
