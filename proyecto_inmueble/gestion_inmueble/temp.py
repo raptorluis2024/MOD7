@@ -5,7 +5,7 @@ import django
 sys.path.append(Path(__file__).resolve().parent.parent.__str__())
 os.environ.setdefault("DJANGO_SETTINGS_MODULE","proyecto_inmueble.settings")
 django.setup()
-from gestion_inmueble.models import Comuna, Inmueble
+from gestion_inmueble.models import Comuna, Inmueble, Region
 
 def getComunas(id_region):
     select = f"""
@@ -18,7 +18,7 @@ def getComunas(id_region):
     for r in query:
         print(r, type(r))
 
-def getInmuebles(comuna):
+def getInmuebles_raw(comuna):
     consulta = f"""SELECT gii.id_inmueble, gii.nombre_inmueble,gic.nombre_comuna, gir.nombre_region
     FROM public.gestion_inmueble_inmueble gii 
     inner join public.gestion_inmueble_comuna gic 
@@ -27,15 +27,48 @@ def getInmuebles(comuna):
     on gic.region_id = gir.id_region 
     where gic.nombre_comuna  like %s 
     """
-
     params = ['%' + comuna + '%']
-    
-    print(consulta)
     resultado = Inmueble.objects.raw(consulta,params)
-    
     for i in resultado:
         print(i)
+     
+    archi1=open("../inmuebles1.txt","w")
+    for r in resultado:
+        archi1.write(str(r.id_inmueble) + ',' + r.nombre_inmueble + ',' + r.nombre_comuna + ',' + r.nombre_region)
+        archi1.write("\n")
+    archi1.close()
         
-getComunas(13)
-getInmuebles('SAN')
+def get_list_inmuebles(name,descr):
+    lista_inmuebles = Inmueble.objects.filter(nombre_inmueble__contains=name).filter(descripcion__contains=descr)
+    
+    archi1=open("../inmuebles2.txt","w")
+    for l in lista_inmuebles:
+        archi1.write(str(l))
+        archi1.write("\n")
+    archi1.close()
+    
+def get_list_inmuebles_comuna():
+    comunas = [x.id_comuna for x in Comuna.objects.all()]
+    for c in comunas:
+        print(c)
+        try:
+            lista_inmuebles = Inmueble.objects.filter(id_comuna=c)
+            archi1=open("../all_inmbuebles.txt","a")
+            for l in lista_inmuebles:
+                archi1.write(str(l))
+                archi1.write(',')
+                archi1.write(str(c))
+                archi1.write("\n")
+            archi1.close()
+        except Exception:
+            pass
+
+#getComunas(13)
+#getInmuebles_raw('SAN')
+#get_list_inmuebles('tes','des')
+get_list_inmuebles_comuna()
+
+
+
+
     
