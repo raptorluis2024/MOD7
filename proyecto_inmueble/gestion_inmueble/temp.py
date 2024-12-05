@@ -66,10 +66,24 @@ def get_list_inmuebles_comuna():
         except Exception:
             pass
 
+def get_inmuebles_por_comuna():
+    consulta = """
+    SELECT gii.id_inmueble, gii.nombre_inmueble,gic.nombre_comuna, gir.nombre_region
+    FROM public.gestion_inmueble_inmueble gii 
+    inner join public.gestion_inmueble_comuna gic 
+    on gii.id_comuna_id = gic.id_comuna 
+    inner join public.gestion_inmueble_region gir 
+    on gic.region_id = gir.id_region 
+    group by id_inmueble,nombre_inmueble, nombre_comuna, nombre_region 
+    """
+    return Inmueble.objects.raw(consulta)
+
 #getComunas(13)
 #getInmuebles_raw('M')
 #get_list_inmuebles('tes','des')
-get_list_inmuebles_comuna()
+#get_list_inmuebles_comuna()
+for x in get_inmuebles_por_comuna():
+    print(x.id_inmueble, x.nombre_inmueble, x.nombre_comuna, x.nombre_region)
 
 
 
