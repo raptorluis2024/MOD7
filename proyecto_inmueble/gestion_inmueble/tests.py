@@ -5,6 +5,7 @@ from gestion_inmueble.services import listarComunas,getProfile, addUser
 from gestion_inmueble.services import addRegion,delRegion, getComunas
 from gestion_inmueble.services import obtener_comunas_por_region
 from gestion_inmueble.services import getInmuebles,exportar_comunas
+import pandas as pd
 # Create your tests here.
 
 
@@ -37,3 +38,8 @@ for resultado in resultados:
     
 print("***********EXPORTAR COMUNAS************")
 exportar_comunas(1)
+
+df = pd.DataFrame(resultados)
+print(df)
+df.to_excel("test.xlsx")
+

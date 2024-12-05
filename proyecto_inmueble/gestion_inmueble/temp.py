@@ -30,11 +30,14 @@ def getInmuebles_raw(comuna):
     params = ['%' + comuna + '%']
     resultado = Inmueble.objects.raw(consulta,params)
     for i in resultado:
-        print(i)
+        print(i.id_inmueble, i.nombre_inmueble, i.nombre_comuna, i.nombre_region)
      
     archi1=open("../inmuebles1.txt","w")
     for r in resultado:
-        archi1.write(str(r.id_inmueble) + ',' + r.nombre_inmueble + ',' + r.nombre_comuna + ',' + r.nombre_region)
+        archi1.write(str(r.id_inmueble) + ',' 
+                     + r.nombre_inmueble + ',' 
+                     + r.nombre_comuna + ',' 
+                     + r.nombre_region)
         archi1.write("\n")
     archi1.close()
         
@@ -64,7 +67,7 @@ def get_list_inmuebles_comuna():
             pass
 
 #getComunas(13)
-#getInmuebles_raw('SAN')
+#getInmuebles_raw('M')
 #get_list_inmuebles('tes','des')
 get_list_inmuebles_comuna()
 
