@@ -72,7 +72,7 @@ def log_in(request):
         else:
                
                 login(request, user)
-                template = loader.get_template('inmuebles.html')
+                template = loader.get_template('home.html')
                 inmuebles = getInmuebles()
                 usuario = User.objects.filter(username=usuario).values()[0]["username"]
                 user = get_object_or_404(User, username = request.user) 
