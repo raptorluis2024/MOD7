@@ -85,10 +85,16 @@ def profileUpdate(request):
     template = loader.get_template('profile.html')
     
     if request.method == "GET":
-        perfil = get_object_or_404(Profile, user=request.user)
-        form = ProfileForm(instance=perfil)
-        context = {'form':form}
-        return HttpResponse(template.render(context, request))
+        try:
+            perfil = get_object_or_404(Profile, user=request.user)
+            form = ProfileForm(instance=perfil)
+            context = {'form':form}
+            return HttpResponse(template.render(context, request))
+        except Exception as ex:
+            form = ProfileForm()
+            context = {'form':form}
+            return HttpResponse(template.render(context, request))
+            
     else:
         return HttpResponse(template.render(context, request))
 
