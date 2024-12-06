@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from gestion_inmueble.views import log_in, sign_out, sign_up, crear_inmueble, inmuebles, index
+from gestion_inmueble.views import log_in, sign_out, sign_up 
+from gestion_inmueble.views import crear_inmueble, inmuebles, index, profileUpdate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +27,7 @@ urlpatterns = [
     path('logout/', sign_out, name='logout'),
     path('login/', log_in, name="login"),
     path('crear_inmueble/', crear_inmueble, name="crearinmueble"),
+    path('profile', profileUpdate, name="profileupdate"),
    
     
 ]

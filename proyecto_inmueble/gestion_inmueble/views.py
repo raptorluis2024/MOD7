@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from gestion_inmueble.models import Inmueble, Profile
 from gestion_inmueble.services import getInmuebles
 from django.shortcuts import get_object_or_404
-from gestion_inmueble.forms import formulario_inmueble
+from gestion_inmueble.forms import formulario_inmueble, ProfileForm
 
 
 # Create your views here.
@@ -80,7 +80,18 @@ def log_in(request):
                 context = {"usuario_logueado":usuario, "inmuebles":inmuebles, "profile":profile}
                 return HttpResponse(template.render(context, request))
                 
-        
+@login_required                
+def profileUpdate(request):
+    template = loader.get_template('profile.html')
+    
+    if request.method == "GET":
+        perfil = get_object_or_404(Profile, user=request.user)
+        form = ProfileForm(instance=perfil)
+        context = {'form':form}
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponse(template.render(context, request))
+
 def index(request):
     template = loader.get_template('home.html')
     context = {}
