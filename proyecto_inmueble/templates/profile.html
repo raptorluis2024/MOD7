@@ -9,11 +9,25 @@
         {%endif%}
         <form action="" method="POST">
             {% csrf_token %}
-            {{form}}
+            {{form.as_p}}
 
         <input type="submit" value="Actualizar Perfil">
         </form>
     </p>
-    <p>
-    </p>
+  <!--  
+    <form>
+        <div class="form-group">
+            <label for="id_correo">Correo</label>
+            
+          {{form.correo}}
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="id_rut">Ingrese Rut</label>
+          {{form.rut}}
+        </div>
+   
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      -->
 {%endblock%}
