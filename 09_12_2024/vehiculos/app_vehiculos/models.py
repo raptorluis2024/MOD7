@@ -6,6 +6,7 @@ class vehiculo(models.Model):
     marca = models.CharField(max_length=20, null=False)
     modelo = models.CharField(max_length=20, null=False)
     year = models.IntegerField(null=False)
+    activo= models.BooleanField(default=False)
     def __str__(self):
         return self.patente 
         
