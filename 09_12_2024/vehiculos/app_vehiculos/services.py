@@ -43,5 +43,17 @@ def asignar_vehiculo_a_chofer(rut,patente):
     v=obtener_vehiculo(patente=patente)
     c.vehiculo_id=v
     c.save()
+
+def get_datos_choferes_vehiculos():
+    vehiculos = Chofer.objects.select_related('vehiculo_id').all()
+    return vehiculos
+
+def get_vehiculos():
+    vehiculos = vehiculo.objects.all()
+    return vehiculos
+
+
+
+ 
     
 
