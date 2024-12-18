@@ -21,6 +21,6 @@ from app_importar_exportar.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index, name='index'),
-    path('excel/', include('app_importar_exportar.urls')),
+    path('', include('app_importar_exportar.urls')),
 
 ]

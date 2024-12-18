@@ -8,6 +8,9 @@ from .models import Registro
 import pandas as pd
 from io import BytesIO
 from django.http import HttpResponse
+import json
+import csv
+
 
 def index(request):
     return render(request, 'index.html', {})
@@ -37,11 +40,38 @@ def exportar_excel(request):
     'email': [r.email for r in registros]
     }
     df = pd.DataFrame(data)
+   
     # Crear el archivo Excel
     output = BytesIO()
     with pd.ExcelWriter(output, engine='openpyxl') as writer:
         df.to_excel(writer, index=False)
-        output.seek(0)
-    response = HttpResponse(output, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    output.seek(0)
+    response = HttpResponse(output.read(), content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename="registros.xlsx"'
+    return response
+
+# Vista para exportar registros a CSV
+def exportar_csv(request):
+    registros = Registro.objects.all()
+    # Preparamos la respuesta CSV
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="registros.csv"'
+    writer = csv.writer(response)
+    writer.writerow(['nombre', 'edad', 'email']) # Cabeceras del archivo CSV
+    for registro in registros:
+        writer.writerow([registro.nombre, registro.edad, registro.email])
+    return response
+
+
+# Vista para exportar registros a JSON
+def exportar_json(request):
+    registros = Registro.objects.all()
+    # ConverƟr los registros a una lista de diccionarios
+    data = [
+    {'nombre': r.nombre, 'edad': r.edad, 'email': r.email}
+    for r in registros
+    ]
+    # Preparamos la respuesta JSON
+    response = HttpResponse(json.dumps(data), content_type='application/json')
+    response['Content-Disposition'] = 'attachment; filename="registros.json"'
     return response
